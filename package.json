@@ -1,0 +1,133 @@
+{
+	"name": "apiconnecttools",
+	"displayName": "APIConnectTools",
+	"description": "API Connect Tools for VS Code",
+	"version": "0.0.1",
+	"publisher": "IBM",
+	"engines": {
+		"vscode": "^0.10.6"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"*"
+	],
+	"main": "./extension",
+	"contributes": {
+		"commands": [{
+			"command": "apiconnect.check_installation",
+			"title": "Check installation",
+            "category":"APIConnect"
+		},
+        {
+			"command": "apiconnect.addContentAssistSupport",
+			"title": "Add intellisense support for API Connect artifacts on this project",
+            "category":"APIConnect"
+		},
+        {"command": "apiconnect.edit",
+			"title": "Launch graphical API designer",
+            "category":"APIConnect"
+		},
+        {"command": "apiconnect.create",
+			"title": "Create development artifacts",
+            "category":"APIConnect"
+		},        
+        {
+			"command": "apiconnect.runInTerminal",
+			"title": "Run API Connect command in terminal",
+            "category":"APIConnect"
+		},
+        {
+			"command": "apiconnect.loopback",
+			"title": "Create Loopback application",
+            "category":"APIConnect"
+		},
+        {
+			"command": "apiconnect.loopbackCmd",
+			"title": "Loopback commands",
+            "category":"APIConnect"
+		},                
+        {
+			"command": "apiconnect.startLocal",
+			"title": "Start local (runs 'node .' in the terminal)",
+            "category":"APIConnect"
+		},
+        {
+			"command": "apiconnect.launchWebServer",
+			"title": "Launch web server URL",
+            "category":"APIConnect"
+		},
+        {
+			"command": "apiconnect.launchRestAPI",
+			"title": "Launch API explorer URL",
+            "category":"APIConnect"
+		}      
+	],
+    "keybindings": [
+            {
+                "command": "apiconnect.edit",
+                "key" : "Ctrl+Shift+a d",
+                "mac" : "Cmd+Shift+a d"
+            },
+            {
+                "command": "apiconnect.create",
+                "key" : "Ctrl+Shift+a c",
+                "mac" : "Cmd+Shift+a c"
+            },
+            {
+                "command": "apiconnect.loopbackCmd",
+                "key" : "Ctrl+Shift+a l",
+                "mac" : "Cmd+Shift+a l"
+            },
+            {
+                "command": "apiconnect.runInTerminal",
+                "key" : "Ctrl+Shift+a t",
+                "mac" : "Cmd+Shift+a t"
+            },
+            {
+                "command": "apiconnect.startLocal",
+                "key" : "Ctrl+Shift+a s",
+                "mac" : "Cmd+Shift+a s"
+            },
+            {
+                "command": "apiconnect.launchWebServer",
+                "key" : "Ctrl+Shift+a w",
+                "mac" : "Cmd+Shift+a w"
+            },
+            {
+                "command": "apiconnect.launchRestAPI",
+                "key" : "Ctrl+Shift+a r",
+                "mac" : "Cmd+Shift+a r"
+            }                                  
+        ]
+    },    
+    "scripts": {
+        "postinstall": "node ./node_modules/vscode/bin/install"
+	},
+	"devDependencies": {
+		"vscode": "^0.11.0"
+	},
+    "dependencies": {
+		"vscode": "^0.11.0",
+        "run-in-terminal": "0.0.2",
+        "openurl" : "1.1.1"
+	},
+    "galleryBanner": {
+        "color": "#f2f2f2",
+        "theme": "light"
+    },
+    "icon": "images/icon.png",
+    "bugs": {
+        "url": "https://developer.ibm.com/answers/topics/apiconnecttools.html"
+    },
+    "keywords": [
+        "IBM",
+        "apiconnect",
+        "express",
+        "javascript",
+        "json",
+        "node.js",
+        "strongloop"
+    ]       
+}
