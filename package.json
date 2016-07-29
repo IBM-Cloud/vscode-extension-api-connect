@@ -2,7 +2,7 @@
 	"name": "apiconnecttools",
 	"displayName": "IBM API Connect Tools",
 	"description": "IBM API Connect Tools for VS Code",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"publisher": "IBM",
 	"engines": {
 		"vscode": "^0.10.6"
