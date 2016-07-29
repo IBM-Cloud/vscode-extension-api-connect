@@ -43,7 +43,7 @@ const leaveBlankMsg = "Leave blank for no options";
 
 // Constants for JSON schemas
 var schemasDirectoryName = "schemas";
-var jsonSchemaFileName = "apiconnect.json";
+var jsonSchemaFileName = "apiconnectmodels.json";
 
 // Product installation found
 // 0: none
@@ -373,7 +373,7 @@ function activate(context) {
     }
 
     function associateJSONSchema() {
-        var association = '{"fileMatch": ["*/models/*.json"], "url": "/' + schemasDirectoryName + '/' + jsonSchemaFileName + '"}';
+        var association = '{"fileMatch": ["*/models/*.json"], "url": "./' + schemasDirectoryName + '/' + jsonSchemaFileName + '"}';
         var filePath = vscode.workspace.rootPath + '/' + vsCodeSettingsDirectory + '/' + vscodeSettingsFileName;
         var settings = null;
         try {

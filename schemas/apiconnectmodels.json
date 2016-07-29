@@ -1,0 +1,91 @@
+{
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the model"
+    },
+    "description": {
+        "type": "string",
+        "description": "Description of the model"
+    },
+    "plural": {
+        "type": "string",
+        "description": "Plural form of the model. Optional: Defaults to plural of name property using standard English conventions"
+    },
+    "base": {
+        "type": "string",
+        "description": "Name of another model that this model extends. The model will \"inherit\" properties and methods of the base model"
+    },
+    "idInjection": {
+        "type": "boolean",
+        "description": "Whether to automatically add an id property to the model"
+    },
+    "http.path": {
+        "type": "string",
+        "description": "Customized HTTP path for REST endpoints of this model"
+    },
+    "strict": {
+        "type": "boolean",
+        "description": "Specifies whether the model accepts only predefined properties or not"
+    },
+    "options": {
+        "type": "object",
+        "description": "JSON object that specifies model options"
+    },
+    "properties": {
+        "additionalProperties": {
+            "oneOf": [
+                {"type": "string",
+                "enum": ["null", "boolean", "number", "string", "object", "array", "date", "buffer", "geoPoint"],
+                "description": "Property type"
+                },
+                {"type": "object",
+                    "properties": {
+                        "default": {
+                            "description": "Default value for the property"
+                        },
+                        "defauntFn": {
+                            "type": "string",
+                            "description": "A name of the function to call to set the default value for the property"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "Documentation for the property"   
+                        },
+                        "id": {
+                            "type": "boolean",
+                            "description": "Whether the property is a unique identifier. Default is false"
+                        },
+                        "required": {
+                            "type": "boolean",
+                            "description": "Whether a value for the property is required. Default is false"
+                        },
+                        "type": {
+                            "type": "string",
+                            "enum": ["null", "boolean", "number", "string", "object", "array", "date", "buffer", "geoPoint"],
+                            "description": "Property type"
+                        }
+                    },
+                    "required": [
+                        "type"
+                    ]
+                }
+            ]
+        }
+    },
+    "acls": {
+        "type": "array"
+    },
+    "scopes": {
+        "type": "object"
+    }
+  },
+  "required": [
+    "name",
+    "description",
+    "base",
+    "http.path",
+    "strict"
+  ]
+}
