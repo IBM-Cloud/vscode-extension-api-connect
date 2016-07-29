@@ -119,7 +119,7 @@
     },
     "icon": "images/icon.png",
     "bugs": {
-        "url": "https://developer.ibm.com/answers/topics/apiconnecttools.html"
+        "url": "https://github.com/IBM-Bluemix/vscode-extension-api-connect"
     },
     "keywords": [
         "IBM",
