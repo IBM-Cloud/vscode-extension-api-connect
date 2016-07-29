@@ -52,4 +52,4 @@ You can access API Connect commands from the Visual Studio Code command pallet p
 
 
 ## Support
-Post issues and questions related to the API Connect Tools via: [https://developer.ibm.com/answers/topics/apiconnecttools/](https://developer.ibm.com/answers/topics/apiconnecttools/)
+Post issues and questions related to the API Connect Tools via: [https://github.com/IBM-Bluemix/vscode-extension-api-connect/](https://github.com/IBM-Bluemix/vscode-extension-api-connect)
