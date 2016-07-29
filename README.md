@@ -1,4 +1,6 @@
 # IBM API Connect Tools
+[![Build Status](https://travis-ci.org/IBM-Bluemix/vscode-extension-api-connect.svg?branch=master)](https://travis-ci.org/IBM-Bluemix/vscode-extension-api-connect)
+
 Leverage Intellisense on [IBM API Connect](https://developer.ibm.com/apiconnect/) projects.
 
 ## Features
