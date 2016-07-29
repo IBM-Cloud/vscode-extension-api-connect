@@ -1,7 +1,7 @@
 {
 	"name": "apiconnecttools",
-	"displayName": "APIConnectTools",
-	"description": "API Connect Tools for VS Code",
+	"displayName": "IBM API Connect Tools",
+	"description": "IBM API Connect Tools for VS Code",
 	"version": "0.0.1",
 	"publisher": "IBM",
 	"engines": {
@@ -32,7 +32,7 @@
         {"command": "apiconnect.create",
 			"title": "Create development artifacts",
             "category":"APIConnect"
-		},        
+		},
         {
 			"command": "apiconnect.runInTerminal",
 			"title": "Run API Connect command in terminal",
@@ -47,7 +47,7 @@
 			"command": "apiconnect.loopbackCmd",
 			"title": "Loopback commands",
             "category":"APIConnect"
-		},                
+		},
         {
 			"command": "apiconnect.startLocal",
 			"title": "Start local (runs 'node .' in the terminal)",
@@ -62,7 +62,7 @@
 			"command": "apiconnect.launchRestAPI",
 			"title": "Launch API explorer URL",
             "category":"APIConnect"
-		}      
+		}
 	],
     "keybindings": [
             {
@@ -99,9 +99,9 @@
                 "command": "apiconnect.launchRestAPI",
                 "key" : "Ctrl+Shift+a r",
                 "mac" : "Cmd+Shift+a r"
-            }                                  
+            }
         ]
-    },    
+    },
     "scripts": {
         "postinstall": "node ./node_modules/vscode/bin/install"
 	},
@@ -127,5 +127,5 @@
         "json",
         "node.js",
         "strongloop"
-    ]       
+    ]
 }
