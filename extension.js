@@ -385,7 +385,9 @@ function activate(context) {
             var jsonSchemasIndex = settings.indexOf('"json.schemas"');
             if(jsonSchemasIndex != -1) {
                 var openSquareBraketIndex = settings.indexOf('[', jsonSchemasIndex + jsonSchemasIndex.length);
-                settings = settings.substring(0, openSquareBraketIndex + 1) + '\n       ' + association + '\n' + settings.substring(openSquareBraketIndex + 1);
+                var closingSquareBraketIndex = settings.indexOf(']', openSquareBraketIndex);
+                var comma = (settings.substring(openSquareBraketIndex + 1, closingSquareBraketIndex)).trim().length == 0? '' : ',';
+                settings = settings.substring(0, openSquareBraketIndex + 1) + '\n       ' + association + comma + '\n' + settings.substring(openSquareBraketIndex + 1);                
             } else {
                 var closingBraketIndex = settings.lastIndexOf('}');
                 settings = settings.substring(0, closingBraketIndex) + '\n   "json.schemas":[\n      ' + association + '\n   ]\n' + settings.substring(closingBraketIndex);
