@@ -75,7 +75,7 @@ function activate(context) {
     // the workspace has loaded (e.g. calling loopback:app)
     var watcher = vscode.workspace.createFileSystemWatcher(onCreateFile);
     watcher.ignoreChangeEvents = true;    
-    watcher.onDidCreate(function(e){
+    watcher.onDidCreate(function(){
         var persistedSettings = getPersistedSettings();
         handleIntellisense(persistedSettings);                
     })
@@ -99,7 +99,7 @@ function activate(context) {
         // Get global settings
         var extension = vscode.extensions.getExtension(extensionVendor + '.' + extensionId);
         var global = retrieveJSON(extension.extensionPath + '/' + apiConnectSettingsFileName);   
-        for (var property in global) {
+        for (let property in global) {
             if(global.hasOwnProperty(property)) {
                 merged[property] = global[property];
             }
@@ -107,7 +107,7 @@ function activate(context) {
 
         // Get workspace level settings        
         var local = retrieveJSON(vscode.workspace.rootPath + '/' + vsCodeSettingsDirectory + '/' + apiConnectSettingsFileName);
-        for (var property in local) {
+        for (let property in local) {
             if(local.hasOwnProperty(property)) {
                 merged[property] = local[property];
             }
@@ -289,10 +289,10 @@ function activate(context) {
         
         // Reference: https://www.npmjs.com/package/openurl
         if (hostName == '0.0.0.0'){
-            var req = http.request({method: 'HEAD', host : hostName, port : portNum, path : path}, function(req){
+            var req = http.request({method: 'HEAD', host : hostName, port : portNum, path : path}, function(){
                 require('openurl').open('http://' + hostName + ':' + portNum + path);
             });
-            req.on('error', function(err){
+            req.on('error', function(){
                 require('openurl').open('http://localhost:' + portNum + path);
             });
             req.end();        
@@ -351,14 +351,6 @@ function activate(context) {
             require("run-in-terminal").runInTerminal(cmd,[],options);
         }
     }
-    
-    // Displays a message for the cmd that is running
-    function outputCmdRunningMessage(msg){
-        if (outputChannel != null && msg != null){
-            outputChannel.show();      
-            outputChannel.appendLine(msg);
-        }
-    }   
     
     function addJSONSchema() {
         try {            
@@ -508,14 +500,14 @@ function activate(context) {
     }
     
     function performInstallationCheck(callback) {
-        child_process.exec('npm list ' + apiConnectModuleName + ' -g --depth=0', (err, stdout, stderr) => {
+        child_process.exec('npm list ' + apiConnectModuleName + ' -g --depth=0', (err, stdout) => {
             var output = stdout.toString();
             var index = output.indexOf(apiConnectModuleName);
             if(index != -1) {
                 productInstallationFound = 1;
                 callback(output.substring(index + apiConnectModuleName.length + 1, output.indexOf('\n', index + apiConnectModuleName.length)));
             } else {
-                child_process.exec('npm list ' + strongloopModuleName + ' -g --depth=0', (err, stdout, stderr) => {
+                child_process.exec('npm list ' + strongloopModuleName + ' -g --depth=0', (err, stdout) => {
                     var output = stdout.toString();
                     var index = output.indexOf(strongloopModuleName);
                     if(index != -1) {
@@ -538,12 +530,12 @@ function activate(context) {
             statusBarItem.dispose();
             switch(productInstallationFound) {
                 case 0:
-                    var items = ['API Connect is not installed, please visit ' + apiConnectInstallationInstructionsURL + ' for installation instructions.'];
+                    var apiConnectInstalledMessageItems = ['API Connect is not installed, please visit ' + apiConnectInstallationInstructionsURL + ' for installation instructions.'];
                     if(checkDoneOnStartup) {
-                        items.push('Ok, and don\'t check again');    
+                        apiConnectInstalledMessageItems.push('Ok, and don\'t check again');    
                     }
-                    items.push('Open on browser');
-                    vscode.window.showInformationMessage.apply(this, items).then(function(value) {
+                    apiConnectInstalledMessageItems.push('Open on browser');
+                    vscode.window.showInformationMessage.apply(this, apiConnectInstalledMessageItems).then(function(value) {
                         if(value == 'Open on browser') {
                             require('openurl').open(apiConnectInstallationInstructionsURL);
                         } else if(value == 'Ok, and don\'t check again') {
@@ -559,12 +551,12 @@ function activate(context) {
                     }
                 break;
                 case 2:
-                    var items = ['Strongloop version ' + version + ' is installed. Please visit ' + apiConnectInstallationInstructionsURL + ' to upgrade to API Connect'];
+                    var strongloopInstalledMessageItems = ['Strongloop version ' + version + ' is installed. Please visit ' + apiConnectInstallationInstructionsURL + ' to upgrade to API Connect'];
                     if(checkDoneOnStartup) {
-                        items.push('Ok, and don\'t check again');    
+                        strongloopInstalledMessageItems.push('Ok, and don\'t check again');    
                     }
-                    items.push('Open on browser');
-                    vscode.window.showInformationMessage.apply(this, items).then(function(value) {
+                    strongloopInstalledMessageItems.push('Open on browser');
+                    vscode.window.showInformationMessage.apply(this, strongloopInstalledMessageItems).then(function(value) {
                         if(value == 'Open on browser') {
                             require('openurl').open(apiConnectInstallationInstructionsURL);
                         } else if(value == 'Ok, and don\'t check again') {
@@ -575,7 +567,7 @@ function activate(context) {
                 break;
             }
         });
-    };
+    }
     
     
 
@@ -799,7 +791,7 @@ function activate(context) {
                             }
                             
                             signature += jsDocAttributes.options[0].name + ": {";
-                            for(var i = 0; i < jsDocAttributes.properties.length; i++) {
+                            for(let i = 0; i < jsDocAttributes.properties.length; i++) {
                                 signature += jsDocAttributes.properties[i].name + ": " + jsDocAttributes.properties[i].dataType;
                                 if(i < jsDocAttributes.properties.length - 1) {
                                     signature += ", ";
@@ -815,7 +807,7 @@ function activate(context) {
                             }
                             
                             signature += jsDocAttributes.callback[0].name + ": (";
-                            for(var i = 0; i < jsDocAttributes.callbackParams.length; i++) {
+                            for(let i = 0; i < jsDocAttributes.callbackParams.length; i++) {
                                 signature += jsDocAttributes.callbackParams[i].name + ": " + jsDocAttributes.callbackParams[i].dataType;
                                 if(i < jsDocAttributes.callbackParams.length - 1) {
                                     signature += ", ";
@@ -976,22 +968,7 @@ function activate(context) {
             outputChannel.appendLine(msg);
         }
     }    
-    
-    // Attaches the output listener (stdout and stderr) for a 
-    // running child_process
-    function attachCmdOutputListener(cmd, outputChannel){
-        if (outputChannel != null && cmd != null){
-            outputChannel.show();
-            
-            cmd.stdout.on('data', (data) => {
-            outputChannel.append(data); 
-            });
-            
-            cmd.stderr.on('data', (data) => {
-            outputChannel.append(data); 
-            });        
-        }
-    }    
+   
 }
 exports.activate = activate;
 
