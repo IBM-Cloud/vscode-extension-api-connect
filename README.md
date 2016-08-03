@@ -14,7 +14,7 @@ If IBM API Connect is not installed, the tools display a message with a link to 
 
 ![Image](https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/updates/apiconnecttools/img/install0.png)
 
-If you select **OK, and don't ask me again**, you can invoke this feature later by using the following command:
+If you select **OK, and don't check again**, you can invoke this feature later by using the following command:
 
 ![Image](https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/updates/apiconnecttools/img/install1.png)
 
@@ -25,7 +25,7 @@ When the tools detect an API Connect project, the tools display the following me
 
 ![Image](https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/updates/apiconnecttools/img/intellisense0.png)
 
-If you select **OK, and don't ask me again**, you can invoke this feature later by using the following command:
+If you select **No, and don't ask again**, you can invoke this feature later by using the following command:
 
 ![Image](https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/updates/apiconnecttools/img/intellisense1.png)
 
